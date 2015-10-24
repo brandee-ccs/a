@@ -16,16 +16,24 @@
   <div id="main">
     <h1>Test Network</h1>
     <p>running this page to show network status.</p>
-    <div  id="errorMsg" class="error"></div>
-    <div  id="successMsg" class="success"></div>
+    <div style="display:none" id="errorMsg" class="error"></div>
+    <div style="display:none" id="successMsg" class="success"></div>
   </div>
 
   <script type="text/javascript">
     function showSuccessMessage(msg){
-      document.getElementById('successMsg').innerHTML += '<p>' + msg +'</p>';
+      var dom = document.getElementById('successMsg');
+      if (dom) {
+        dom.style.display = 'inherit';
+        dom.innerHTML += '<p>' + msg +'</p>';
+      }
     }
     function showErrorMessage(msg){
-      document.getElementById('errorMsg').innerHTML += '<p>' + msg +'</p>';
+      var dom = document.getElementById('errorMsg');
+      if (dom) {
+        dom.style.display = 'inherit';
+        dom.innerHTML += '<p>' + msg +'</p>';
+      }
     }
 
     Parse.initialize("J6Uts5LORqmMOGMopQbT3D4zC3LOHqtKQxSSLlrl", "aik5vVLN4F8WyHKcseF2U2Y7PgnLIr4eAmw9ELo7");
@@ -38,7 +46,7 @@
           for (var i = 0; i < results.length; i++) {
             texts += results[i].get('foo') + ',' + results[i].updatedAt + '<br>';
           }
-          showSuccessMessage('test objs: ' + texts);
+          showSuccessMessage(texts);
         },
         error: function (error) {
           showErrorMessage("Error: " + error.code + " " + error.message);
@@ -53,7 +61,7 @@
           for (var i = 0; i < results.length; i++) {
             texts += results[i].get('playerName') + ',' + results[i].get('score') + ',' + results[i].updatedAt + '<br>';
           }
-          showSuccessMessage('test objs: ' + texts);
+          showSuccessMessage(texts);
         },
         error: function (error) {
           showErrorMessage("Error: " + error.code + " " + error.message);
