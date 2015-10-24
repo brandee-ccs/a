@@ -23,7 +23,7 @@
   <script type="text/javascript">
     var startTime = new Date();
     function getTimeGapString(){
-      return 'responsed in ' + ((new Date()).getTime() - curTime.getTime()) + 'ms';
+      return 'responsed in ' + ((new Date()).getTime() - startTime.getTime()) + 'ms';
     }
     function showSuccessMessage(msg){
       var dom = document.getElementById('successMsg');
