@@ -15,12 +15,16 @@
   
   <div id="main">
     <h1>Test Network</h1>
-    <p>running this page to show network status.</p>
+    <p>Running this program to test servers on client's network.</p>
     <div style="display:none" id="errorMsg" class="error"></div>
     <div style="display:none" id="successMsg" class="success"></div>
   </div>
 
   <script type="text/javascript">
+    var startTime = new Date();
+    function getTimeGapString(){
+      return 'responsed in ' + ((new Date()).getTime() - curTime.getTime()) + 'ms';
+    }
     function showSuccessMessage(msg){
       var dom = document.getElementById('successMsg');
       if (dom) {
@@ -38,35 +42,39 @@
 
     Parse.initialize("J6Uts5LORqmMOGMopQbT3D4zC3LOHqtKQxSSLlrl", "aik5vVLN4F8WyHKcseF2U2Y7PgnLIr4eAmw9ELo7");
 
-      var testObj = Parse.Object.extend("TestObject");
-      var query = new Parse.Query(testObj);
-      query.find({
-        success: function (results) {
-          var texts = '';
-          for (var i = 0; i < results.length; i++) {
-            texts += results[i].get('foo') + ',' + results[i].updatedAt + '<br>';
-          }
-          showSuccessMessage(texts);
-        },
-        error: function (error) {
-          showErrorMessage("Error: " + error.code + " " + error.message);
+    var testObj = Parse.Object.extend("TestObject");
+    var query = new Parse.Query(testObj);
+    query.find({
+      success: function (results) {
+        showSuccessMessage(getTimeGapString());
+        var texts = '';
+        for (var i = 0; i < results.length; i++) {
+          texts += results[i].get('foo') + ',' + results[i].updatedAt + '<br>';
         }
-      });
+        showSuccessMessage(texts);
+      },
+      error: function (error) {
+        showErrorMessage(getTimeGapString());
+        showErrorMessage("Error: " + error.code + " " + error.message);
+      }
+    });
 
-      var gameScore = Parse.Object.extend("GameScore");
-      query = new Parse.Query(gameScore);
-      query.find({
-        success: function (results) {
-          var texts = '';
-          for (var i = 0; i < results.length; i++) {
-            texts += results[i].get('playerName') + ',' + results[i].get('score') + ',' + results[i].updatedAt + '<br>';
-          }
-          showSuccessMessage(texts);
-        },
-        error: function (error) {
-          showErrorMessage("Error: " + error.code + " " + error.message);
+    var gameScore = Parse.Object.extend("GameScore");
+    query = new Parse.Query(gameScore);
+    query.find({
+      success: function (results) {
+        showSuccessMessage(getTimeGapString());
+        var texts = '';
+        for (var i = 0; i < results.length; i++) {
+          texts += results[i].get('playerName') + ',' + results[i].get('score') + ',' + results[i].updatedAt + '<br>';
         }
-      });
+        showSuccessMessage(texts);
+      },
+      error: function (error) {
+        showErrorMessage(getTimeGapString());
+        showErrorMessage("Error: " + error.code + " " + error.message);
+      }
+    });
   </script>
 </body>
 
