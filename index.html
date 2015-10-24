@@ -1,1 +1,65 @@
-hello
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+
+  <title>My Parse App</title>
+  <meta name="description" content="My Parse App">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+</head>
+
+<body>
+  
+  <div id="main">
+    <h1>Test Network</h1>
+    <p>running this page to show network status.</p>
+    <div  id="errorMsg" class="error"></div>
+    <div  id="successMsg" class="success"></div>
+  </div>
+
+  <script type="text/javascript">
+    function showSuccessMessage(msg){
+      document.getElementById('successMsg').innerHTML += '<p>' + msg +'</p>';
+    }
+    function showErrorMessage(msg){
+      document.getElementById('errorMsg').innerHTML += '<p>' + msg +'</p>';
+    }
+
+    Parse.initialize("J6Uts5LORqmMOGMopQbT3D4zC3LOHqtKQxSSLlrl", "aik5vVLN4F8WyHKcseF2U2Y7PgnLIr4eAmw9ELo7");
+
+      var testObj = Parse.Object.extend("TestObject");
+      var query = new Parse.Query(testObj);
+      query.find({
+        success: function (results) {
+          var texts = '';
+          for (var i = 0; i < results.length; i++) {
+            texts += results[i].get('foo') + ',' + results[i].updatedAt + '<br>';
+          }
+          showSuccessMessage('test objs: ' + texts);
+        },
+        error: function (error) {
+          showErrorMessage("Error: " + error.code + " " + error.message);
+        }
+      });
+
+      var gameScore = Parse.Object.extend("GameScore");
+      query = new Parse.Query(gameScore);
+      query.find({
+        success: function (results) {
+          var texts = '';
+          for (var i = 0; i < results.length; i++) {
+            texts += results[i].get('playerName') + ',' + results[i].get('score') + ',' + results[i].updatedAt + '<br>';
+          }
+          showSuccessMessage('test objs: ' + texts);
+        },
+        error: function (error) {
+          showErrorMessage("Error: " + error.code + " " + error.message);
+        }
+      });
+  </script>
+</body>
+
+</html>
