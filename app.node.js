@@ -134,7 +134,7 @@ module.exports =
             case 0:
               return context$3$0.abrupt('return', _reactDom2['default'].render(component, container, function () {
                 // Track the page view event via Google Analytics
-                window.ga('send', 'pageview');
+                // window.ga('send', 'pageview');
               }));
 
             case 1:
@@ -811,7 +811,9 @@ module.exports =
       xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
     xmlhttp.handleResult = function (retText) {
+      // console.log(retText);
       var data = JSON.parse(retText);
+      // console.log(data);
       if (data && succeed) {
         succeed(data);
       }
@@ -845,9 +847,10 @@ module.exports =
       key: 'componentDidMount',
       value: function componentDidMount() {
         console.log("getting product");
+        var pObj = this;
         loadJson('/products/' + this.props.idname + '/desc.json', function (result) {
           console.log("got product");
-          this.setState({ product: result });
+          pObj.setState({ product: result });
         });
 
         // $.ajax({
@@ -884,18 +887,18 @@ module.exports =
           ),
           _react2['default'].createElement('dl', null),
           _react2['default'].createElement(
-            'dt',
+            'dd',
+            null,
+            _react2['default'].createElement('img', { src: scanImage, width: '150', height: '150' })
+          ),
+          _react2['default'].createElement(
+            'dd',
             null,
             _react2['default'].createElement(
               'a',
               { href: this.state.product.downloadUrl },
               'Click Download Now'
             )
-          ),
-          _react2['default'].createElement(
-            'dd',
-            null,
-            _react2['default'].createElement('img', { src: scanImage, width: '150', height: '150' })
           ),
           _react2['default'].createElement(
             'dd',
@@ -1489,7 +1492,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/**\n * React Static Boilerplate\n * https://github.com/koistya/react-static-boilerplate\n * Copyright (c) Konstantin Tarkus (@koistya) | MIT license\n */\n\n/**\n * React Static Boilerplate\n * https://github.com/koistya/react-static-boilerplate\n * Copyright (c) Konstantin Tarkus (@koistya) | MIT license\n */\n\n/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n:root {\n\n  /*\n   * Colors\n   * ======================================================================== */ /* #222 */   /* #404040 */ /* #555 */ /* #777 */ /* #eee */\n\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n\n  /*\n   * Animations\n   * ======================================================================== */\n\n}\n\nhtml{font-size: 10px;}\n@media only screen and (min-width: 401px){\n    html {\n        font-size: 12px !important;\n    }\n}\n@media only screen and (min-width: 428px){\n    html {\n        font-size: 13px !important;\n    }\n}\n@media only screen and (min-width: 481px){\n    html {\n        font-size: 15px !important; \n    }\n}\n@media only screen and (min-width: 569px){\n    html {\n        font-size: 17px !important; \n    }\n}\n@media only screen and (min-width: 641px){\n    html {\n        font-size: 20px !important; \n    }\n}\n\nhtml, body {\n  margin: 0;\n  padding: 0;\n  background-color: #f7f7f7;\n  color: #333;\n  font-family: 'Roboto','Helvetica',sans-serif;\n}\n\n.Layout {\n  margin: 0 auto;\n}\n\n@media (min-width: 768px) {\n  .Layout {\n    width: calc(768px - 18px);\n  }\n}\n\n@media (min-width: 992px) {\n  .Layout {\n    width: calc(992px - 22px);\n  }\n}\n\n@media (min-width: 1200px) {\n  .Layout {\n    width: calc(1200px - 30px);\n  }\n}\n", ""]);
+  exports.push([module.id, "/**\n * React Static Boilerplate\n * https://github.com/koistya/react-static-boilerplate\n * Copyright (c) Konstantin Tarkus (@koistya) | MIT license\n */\n\n/**\n * React Static Boilerplate\n * https://github.com/koistya/react-static-boilerplate\n * Copyright (c) Konstantin Tarkus (@koistya) | MIT license\n */\n\n/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n:root {\n\n  /*\n   * Colors\n   * ======================================================================== */ /* #222 */   /* #404040 */ /* #555 */ /* #777 */ /* #eee */\n\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n\n  /*\n   * Animations\n   * ======================================================================== */\n\n}\n\nhtml{font-size: 10px;}\n@media only screen and (min-width: 401px){\n    html {\n        font-size: 12px !important;\n    }\n}\n@media only screen and (min-width: 428px){\n    html {\n        font-size: 13px !important;\n    }\n}\n@media only screen and (min-width: 481px){\n    html {\n        font-size: 15px !important; \n    }\n}\n@media only screen and (min-width: 569px){\n    html {\n        font-size: 17px !important; \n    }\n}\n@media only screen and (min-width: 641px){\n    html {\n        font-size: 20px !important; \n    }\n}\n\nhtml, body {\n  margin: 0;\n  padding: 0;\n  background-color: #fff;\n  color: #333;\n  font-family: 'Roboto','Helvetica',sans-serif;\n}\n\n.Layout {\n  margin: 0 auto;\n}\n\n@media (min-width: 768px) {\n  .Layout {\n    width: calc(768px - 18px);\n  }\n}\n\n@media (min-width: 992px) {\n  .Layout {\n    width: calc(992px - 22px);\n  }\n}\n\n@media (min-width: 1200px) {\n  .Layout {\n    width: calc(1200px - 30px);\n  }\n}\n", ""]);
 
   // exports
 
@@ -1531,7 +1534,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "\n/**\n * React Static Boilerplate\n * https://github.com/koistya/react-static-boilerplate\n * Copyright (c) Konstantin Tarkus (@koistya) | MIT license\n */\n\n/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n:root {\n\n  /*\n   * Colors\n   * ======================================================================== */ /* #222 */   /* #404040 */ /* #555 */ /* #777 */ /* #eee */\n\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n\n  /*\n   * Animations\n   * ======================================================================== */\n\n}\n\nhtml{font-size: 10px;}\n@media only screen and (min-width: 401px){\n    html {\n        font-size: 12px !important;\n    }\n}\n@media only screen and (min-width: 428px){\n    html {\n        font-size: 13px !important;\n    }\n}\n@media only screen and (min-width: 481px){\n    html {\n        font-size: 15px !important; \n    }\n}\n@media only screen and (min-width: 569px){\n    html {\n        font-size: 17px !important; \n    }\n}\n@media only screen and (min-width: 641px){\n    html {\n        font-size: 20px !important; \n    }\n}\n\n\n.Product {\n  background: #eee;\n  color: #000;\n}\n\n", ""]);
+  exports.push([module.id, "\n/**\n * React Static Boilerplate\n * https://github.com/koistya/react-static-boilerplate\n * Copyright (c) Konstantin Tarkus (@koistya) | MIT license\n */\n\n/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n:root {\n\n  /*\n   * Colors\n   * ======================================================================== */ /* #222 */   /* #404040 */ /* #555 */ /* #777 */ /* #eee */\n\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n\n  /*\n   * Animations\n   * ======================================================================== */\n\n}\n\nhtml{font-size: 10px;}\n@media only screen and (min-width: 401px){\n    html {\n        font-size: 12px !important;\n    }\n}\n@media only screen and (min-width: 428px){\n    html {\n        font-size: 13px !important;\n    }\n}\n@media only screen and (min-width: 481px){\n    html {\n        font-size: 15px !important; \n    }\n}\n@media only screen and (min-width: 569px){\n    html {\n        font-size: 17px !important; \n    }\n}\n@media only screen and (min-width: 641px){\n    html {\n        font-size: 20px !important; \n    }\n}\n\n\n.Product {\n  color: #222;\n  padding-left: 0.5rem;\n  padding-right: 0.5rem;\n  padding-bottom: 1rem;\n}\n\n", ""]);
 
   // exports
 
