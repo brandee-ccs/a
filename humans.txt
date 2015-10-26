@@ -11,5 +11,5 @@
 
 # TECHNOLOGY COLOPHON
 
-    CSS3, HTML5, JavaScript
-    React, Flux, SuperAgent
+    ES2015, HTML5, CSS3
+    React, Normalize.css
